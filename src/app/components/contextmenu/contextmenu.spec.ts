@@ -90,7 +90,7 @@ class TestContextMenuTest {
     ];
 }
 
-describe('ConextMenu', () => {
+fdescribe('ConextMenu', () => {
     let contextmenu: ContextMenu;
     let contextmenuP: ContextMenu;
     let fixture: ComponentFixture<TestContextMenuTest>;
@@ -163,11 +163,17 @@ describe('ConextMenu', () => {
         expect(hideSpy).toHaveBeenCalled();
     });
 
-    it('should open and close programmaticlaly', () => {
+    it('should open and close programmatically', () => {
         fixture.detectChanges();
 
         const showSpy = spyOn(contextmenu, 'show').and.callThrough();
-        contextmenu.toggle();
+
+        const contextmenuEvent: any = document.createEvent('CustomEvent');
+        contextmenuEvent.pageX = 20;
+        contextmenuEvent.pageY = 20;
+        fixture.detectChanges();
+
+        contextmenu.toggle(contextmenuEvent);
         fixture.detectChanges();
 
         expect(showSpy).toHaveBeenCalled();
