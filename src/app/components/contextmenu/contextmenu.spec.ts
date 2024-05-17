@@ -110,7 +110,8 @@ fdescribe('ConextMenu', () => {
     it('should create container by default', () => {
         fixture.detectChanges();
 
-        const containerEls = fixture.debugElement.queryAll(By.css('.p-contextmenu'));
+        const containerEls = fixture.debugElement.queryAll(By.css('p-contextmenu'));
+
         expect(containerEls.length).toEqual(2);
     });
 
